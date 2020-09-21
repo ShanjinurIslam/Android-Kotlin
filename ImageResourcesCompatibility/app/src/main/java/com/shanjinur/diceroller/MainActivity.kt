@@ -8,7 +8,7 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     private val resourceMap = mapOf<Int,Int>(1 to R.drawable.dice_1, 2 to R.drawable.dice_2,3 to R.drawable.dice_3,4 to R.drawable.dice_4,5 to R.drawable.dice_5,6 to R.drawable.dice_6)
-    private lateinit var diceImage:ImageView
+    private lateinit var diceImage:ImageView // for later initialization
     /*
 
     val drawableResource = when (randomInt) {
