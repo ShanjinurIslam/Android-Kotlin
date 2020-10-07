@@ -1,6 +1,6 @@
 package com.shanjinur.rxjava.view
 
-import android.R
+import com.shanjinur.rxjava.R
 import android.content.Context
 import android.graphics.Color
 import android.text.Html
@@ -40,7 +40,7 @@ class NotesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView: View = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_list_item, parent, false)
+            .inflate(R.layout.note_list_row, parent, false)
         return MyViewHolder(itemView)
     }
 
@@ -65,9 +65,6 @@ class NotesAdapter(
         return notesList.size
     }
 
-    /**
-     * Chooses random color defined in res/array.xml
-     */
     private fun getRandomMaterialColor(typeColor: String): Int {
         var returnColor: Int = Color.GRAY
         val arrayId = context.resources
@@ -81,16 +78,11 @@ class NotesAdapter(
         return returnColor
     }
 
-    /**
-     * Formatting timestamp to `MMM d` format
-     * Input: 2018-02-21 00:15:42
-     * Output: Feb 21
-     */
     private fun formatDate(dateStr: String): String {
         try {
-            val fmt = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-            val date: Date = fmt.parse(dateStr)
-            val fmtOut = SimpleDateFormat("MMM d")
+            val fmt = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)
+            val date: Date = fmt.parse(dateStr)!!
+            val fmtOut = SimpleDateFormat("MMM d",Locale.ENGLISH)
             return fmtOut.format(date)
         } catch (e: ParseException) {
         }

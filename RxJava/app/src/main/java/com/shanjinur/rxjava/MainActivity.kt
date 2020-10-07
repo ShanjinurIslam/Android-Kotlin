@@ -7,12 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.shanjinur.rxjava.app.Const
-import com.shanjinur.rxjava.network.ApiClient
-import com.shanjinur.rxjava.network.ApiService
-import com.shanjinur.rxjava.network.model.Note
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,18 +20,6 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, Const.BASE_URL, Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
-
-        val apiService:ApiService = ApiClient.getClient(applicationContext).create(ApiService::class.java)
-
-        apiService.fetchAllNotes()?.subscribeOn(Schedulers.io())?.observeOn(AndroidSchedulers.mainThread())?.subscribeWith(object : DisposableSingleObserver<List<Note?>?>() {
-                override fun onSuccess(notes: List<Note?>) {
-                    // Received all notes
-                }
-
-                override fun onError(e: Throwable) {
-                    // Network error
-                }
-            })
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
