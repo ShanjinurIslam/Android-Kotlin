@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Data Binding</string>
+    <string name="type_your_name">Type Your Name</string>
+    <string name="about_me">About Me!</string>
+</resources>
